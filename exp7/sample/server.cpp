@@ -11,17 +11,17 @@ int main() {
 
     struct sockaddr_in my_addr, client_addr;
 
-
-    my_addr.sin_family = AF_INET;
-    my_addr.sin_port = htons(4999);
-    my_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-
-
     sd = socket(AF_INET, SOCK_STREAM, 0);
     if (sd < 0) {
         perror("Socket creation failed");
         return 1;
     }
+
+
+    my_addr.sin_family = AF_INET;
+    my_addr.sin_port = htons(4999);
+    my_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+
 
 
     if (bind(sd, (struct sockaddr*)&my_addr, sizeof(struct sockaddr_in)) < 0) {
